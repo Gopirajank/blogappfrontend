@@ -1,0 +1,58 @@
+.app {
+    display: flex;
+    justify-content: center;
+  }
+  a {
+    text-decoration: none;
+  }
+.single{
+    display: flex;
+    gap: 50px;
+  }
+  .singlecontent{
+    flex:5;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .singlemenu{
+    flex: 2;
+  
+  }
+  .singleuser{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+  }
+  .singlecontentimg{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  .singleuserimg{
+      width: 50px;
+      height: 50px;
+  }
+  .singlespan{
+    font-weight: bold;
+  }
+  .edit{
+    display: flex;
+    gap: 5px;
+  }
+  .edit img {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+  
+  .singlecontent h1{
+    font-size: 42px;
+    color:#333 ;
+  
+  }
+  .singlecontent p{
+    text-align: justify;
+    line-height: 30px;
+  }
