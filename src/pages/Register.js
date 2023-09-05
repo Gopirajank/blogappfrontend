@@ -1,43 +1,63 @@
-import React, { useState } from 'react'
-import "./loginregister.css"
-import { Link } from 'react-router-dom'
+import axios from "axios";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./register.css";
 
-const Register = () => {
-  const [username,setUsername] = useState("");
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
-  async function register(e){
+export default function Register() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:4000",{
-      method:"POST",
-      body:"JSON.stringify({username,email,password})",
-      header:{"Content-Type":"application/json"}
-    })
-  }
+    setError(false);
+    try {
+      const res = await axios.post("/auth/register", {
+        username,
+        email,
+        password,
+      });
+      res.data && window.location.replace("/login");
+    } catch (err) {
+      setError(true);
+    }
+  };
   return (
-    <div className='auth'>
-        <h1> Register </h1>
-        <form className='register' onSubmit={register}>
-            <input  required className="inp1"
-                 placeholder='username' 
-                type='text' 
-                value={username} onChange={e => setUsername(e.target.value)}
-              />
-            <input  required className="inp1"
-              placeholder='email' type='text'
-              value={email} onChange={e => setEmail(e.target.value)}
-             />
-            <input required className="inp1" 
-              placeholder='password' type='password' 
-              value={password} onChange={e => setPassword(e.target.value)}
-            />
-            <button className='login'>Register</button>
-            <p className='plogin'> This is an Error!</p>
-            <span>Don't you have a account? <Link to="/login">Login</Link></span>
-        </form>
-        
+    <div className="register">
+      <span className="registerTitle">Register</span>
+      <form className="registerForm" onSubmit={handleSubmit}>
+        <label>Username</label>
+        <input
+          type="text"
+          className="registerInput"
+          placeholder="Enter your username..."
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <label>Email</label>
+        <input
+          type="text"
+          className="registerInput"
+          placeholder="Enter your email..."
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          className="registerInput"
+          placeholder="Enter your password..."
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className="registerButton" type="submit">
+          Register
+        </button>
+      </form>
+      <button className="registerLoginButton">
+        <Link className="link" to="/login">
+          Login
+        </Link>
+      </button>
+      {error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong!</span>}
     </div>
-  )
+  );
 }
-
-export default Register

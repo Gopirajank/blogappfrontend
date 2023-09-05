@@ -1,88 +1,99 @@
-.add{
-    margin-top: 20px;
-    display: flex;
-    gap:20px;
-  }
-  .writecontent{
-    flex: 5;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .writecontent input{
-    padding: 10px;
-    border: 1px solid lightgray;
-  }
-  .editorcontainer{
-    padding: 10px;
-    width: 95%;
-    height: 300px;
-    border: 1px solid lightgray;
-    overflow: scroll;
-  
-  }
-  .editor{
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-  .writemenu{
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    gap:20px;
-  }
-  .writeitem{
-    padding: 10px;
-    flex: 1;
-    border: 1px solid lightgray;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #555;
-  }
-  
-  .writeitem h1{
-    font-size: 20px;
-  }
-  .writelable{
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  
-  .write button{
-    display: flex;
-    justify-content: space-between;
-  }
-  .writebut1{
-    cursor: pointer;
-    color: teal;
-    background-color: white;
-    border: 1px solid teal;
-    padding: 3px 5px;
-  }
-  .writebut2 {
-    cursor: pointer;
-    color: white;
-    background-color: teal;
-    border: 1px solid teal;
-    padding: 3px 5px;
-  }
-  .cat{
-    display: flex;
-    align-items: center;
-    color: teal;
-    gap: 2px;
-  
-  }
-  .preview-content{
-    padding: 10px;
-    border: 1px solid lightgray;
-  width: 95%;
-  height: 300px;
-  overflow: scroll;
-  border: 1px solid lightgray;
-  
-  }
-  
+/* write.css */
+
+/* Container Styles */
+.write {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Allow content to wrap to the next row on smaller screens */
+}
+
+/* Left Column Styles (React Quill Editor) */
+.editor-container {
+  flex: 1; /* Grow to take available space */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  max-height: 500px;
+  overflow: hidden; /* Fix overflow issue by hiding it */
+}
+
+/* Quill Editor Styles (you may need to adjust these based on your preferences) */
+.ql-editor {
+  min-height: 150px; /* Adjusted minimum height for better readability */
+  font-size: 16px;
+  flex: 1; /* Grow to take available space */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden; /* Fix overflow issue by hiding it */
+}
+
+/* Right Column Styles (Markdown Preview) */
+.write .markdown-preview {
+  flex: 1; /* Grow to take available space */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: auto; /* Use "auto" for automatic scrollbar when needed */
+}
+
+/* Preview Content Styles */
+.write .preview-content {
+  font-size: 16px;
+}
+
+/* Customize the Preview Header */
+.write .markdown-preview h2 {
+  color: teal;
+  font-size: 20px;
+}
+
+/* Form Styles */
+.writeForm {
+  flex: 1; /* Expand the form to take the available width */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image Styles */
+.writeImg {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 10px; /* Add margin to separate it from the form */
+}
+
+/* Form Group Styles */
+.writeFormGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* Input Styles */
+.writeInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Submit Button Styles */
+.writeSubmit {
+  background-color: teal;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}

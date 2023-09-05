@@ -1,45 +1,77 @@
 import React from 'react';
-import "./navbar.css"; // Assuming this is your custom stylesheet
+import "./navbar.css"; 
 import { Link } from 'react-router-dom';
-import Logo from "../imgaes/navlogo.png"
+import IMAGE from "../imgaes/pngegg.png"
+import { useContext } from "react";
+import { Context } from "./context/Context";
+
+
 
 const Navbar = () => {
+  const { user, dispatch } = useContext(Context);
+  const PF = "http://localhost:5000/images/"
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+  };
   return (
-    <div className="navbar">
-      <div className="container">
-        <div className="logo">
-          <img className="navlogo" src={Logo}  /> 
-        </div>
-        <div className="links">
-          <Link className="link" to="/?cat=art">
-            <h6>ART</h6>
-          </Link>
-          <Link className="link" to="/?cat=science">
-            <h6>SCIENCE</h6>
-          </Link>
-          <Link className="link" to="/?cat=technology">
-            <h6>TECHNOLOGY</h6>
-          </Link>
-          <Link className="link" to="/?cat=cinema">
-            <h6>CINEMA</h6>
-          </Link>
-          <Link className="link" to="/?cat=design">
-            <h6>DESIGN</h6>
-          </Link>
-          <Link className="link" to="/?cat=food">
-            <h6>FOOD</h6>
-          </Link>
-          <span>Johny</span>
-          <span>Logout</span>
-          <span className="write">
-            <Link className="link" to="/write">
-              Write
+    <div className="top">
+      <div className="topLeft">
+        <i className="topIcon fab fa-facebook-square"></i>
+        <i className="topIcon fab fa-twitter-square"></i>
+        <i className="topIcon fab fa-pinterest-square"></i>
+        <i className="topIcon fab fa-instagram-square"></i>
+      </div>
+      <div className="topCenter">
+        <ul className="topList">
+          <li className="topListItem">
+            <Link className="link" to="/">
+              HOME
             </Link>
-          </span>
-        </div>
+          </li>
+          <li className="topListItem">
+            <Link className="link" to="/">
+              ABOUT
+            </Link>
+          </li>
+          <li className="topListItem">
+            <Link className="link" to="/">
+              CONTACT
+            </Link>
+          </li>
+          <li className="topListItem">
+            <Link className="link" to="/write">
+              WRITE
+            </Link>
+          </li>
+          <li className="topListItem" onClick={handleLogout}>
+            {user && "LOGOUT"}
+          </li>
+        </ul>
+      </div>
+      <div className="topRight">
+        {user ? (
+          <Link to="/settings">
+            <img className="topImg" src={PF+user.profilePic} alt="" />
+          </Link>
+        ) : (
+          <ul className="topList">
+            <li className="topListItem">
+              <Link className="link" to="/login">
+                LOGIN
+              </Link>
+            </li>
+            <li className="topListItem">
+              <Link className="link" to="/register">
+                REGISTER
+              </Link>
+            </li>
+          </ul>
+        )}
+        <i className="topSearchIcon fas fa-search"></i>
       </div>
     </div>
   );
-};
+}
 
 export default Navbar;
