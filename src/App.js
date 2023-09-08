@@ -10,9 +10,9 @@ import { useContext } from "react";
 import { Context } from "./context/Context";
 
 function App() {
-  const {user} = useContext(Context); // Make sure the variable name is correct (uppercase "U")
+  const { user } = useContext(Context); // Make sure the variable name is correct (lowercase "u")
 
-  console.log("User:", User); // Log the value of User
+  console.log("User:", user); // Log the value of user
 
   return (
     <Router>
@@ -22,20 +22,20 @@ function App() {
         <Route path="/posts" element={<Home />} />
         <Route
           path="/register"
-          element={User ? <Navigate to="/" /> : <Register />}
+          element={user ? <Navigate to="/" /> : <Register />}
         />
         <Route
           path="/login"
-          element={User ? <Navigate to="/" /> : <Login />}
+          element={user ? <Navigate to="/" /> : <Login />}
         />
         <Route path="/post/:id" element={<Single />} />
         <Route
           path="/write"
-          element={User ? <Write /> : <Navigate to="/login" />}
+          element={user ? <Write /> : <Navigate to="/login" />}
         />
         <Route
           path="/setting"
-          element={User ? <Setting /> : <Navigate to="/login" />}
+          element={user ? <Setting /> : <Navigate to="/login" />}
         />
       </Routes>
     </Router>

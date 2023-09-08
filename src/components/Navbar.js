@@ -1,9 +1,8 @@
 import React from 'react';
 import "./navbar.css"; 
 import { Link } from 'react-router-dom';
-import IMAGE from "../imgaes/pngegg.png"
 import { useContext } from "react";
-import { Context } from "./context/Context";
+import { Context } from "../context/Context";
 
 
 
